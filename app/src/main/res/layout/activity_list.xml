@@ -17,8 +17,7 @@
     <Spinner
         android:id="@+id/spinnerRating"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="Rating" />
+        android:layout_height="wrap_content" />
 <!--        android:entries="@array/spinnerRating"-->
 
 

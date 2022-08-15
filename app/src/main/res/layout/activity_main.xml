@@ -67,7 +67,6 @@
         android:id="@+id/spinRating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/movieRatings"
         />
 
     <LinearLayout
@@ -97,6 +96,5 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/noom_peerapong_2uwfeagum6e_unsplash" />
+        android:layout_height="wrap_content" />
 </LinearLayout>
