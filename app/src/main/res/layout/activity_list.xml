@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Show pg 13 movies"
-        app:backgroundTint="#573D3D" />
+        app:backgroundTint="#000000" />
 
     <Spinner
         android:id="@+id/spinnerRating"

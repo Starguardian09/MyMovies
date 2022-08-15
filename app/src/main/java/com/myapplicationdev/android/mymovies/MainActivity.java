@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
     EditText etTitle;
     EditText etGenre;
     EditText etYear;
-    ArrayList<Movies> al;
+    ArrayList<Movie> al;
     Spinner spinGenre;
     ListView lv;
-    ArrayAdapter<Movies> aa;
-    Movies data;
+    ArrayAdapter<Movie> aa;
+    Movie data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,22 +42,16 @@ public class MainActivity extends AppCompatActivity {
         etGenre = findViewById(R.id.etGenre);
         etYear = findViewById(R.id.etYear);
         spinGenre = findViewById(R.id.spinnerGenre);
-        //rgContent = findViewById(R.id.groupradio);
-        //star1 = findViewById(R.id.radioButton1);
-        //star2 = findViewById(R.id.radioButton2);
-        //star3 = findViewById(R.id.radioButton3);
-        //star4 = findViewById(R.id.radioButton4);
-        //star5 = findViewById(R.id.radioButton5);
+
         Intent i = getIntent();
-        data = (Movies) i.getSerializableExtra("data");
+        data = (Movie) i.getSerializableExtra("data");
 
 
-        al = new ArrayList<Movies>();
-        aa = new ArrayAdapter<Movies>(this,
+        al = new ArrayList<Movie>();
+        aa = new ArrayAdapter<Movie>(this,
                 android.R.layout.simple_list_item_1, al);
         lv.setAdapter(aa);
 
-//        String movieRatingS = "";
 
 
 
@@ -76,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 //                Log.d("result",data3+"")
 
                 DBHelper dbh = new DBHelper(MainActivity.this);
-                long inserted_id = dbh.insertNote(dataTitle,dataGenre,dataYear,movieRating);
+                long inserted_id = dbh.insertMovie(dataTitle,dataGenre,dataYear,movieRating);
 
                 if (inserted_id != -1){
                     Toast.makeText(MainActivity.this, "Insert successful",
