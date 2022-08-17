@@ -23,6 +23,9 @@ public class UpdateActivity extends AppCompatActivity {
     Button btnUpdate, btnDelete, btnCancel;
     Movie data;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
