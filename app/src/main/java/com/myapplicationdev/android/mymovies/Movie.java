@@ -2,7 +2,6 @@ package com.myapplicationdev.android.mymovies;
 
 import java.io.Serializable;
 
-
 public class Movie implements Serializable {
 
     private int id;

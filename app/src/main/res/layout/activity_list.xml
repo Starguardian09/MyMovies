@@ -8,7 +8,7 @@
 
 
     <Button
-        android:id="@+id/btnPG13Movies"
+        android:id="@+id/btnMovie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Show pg 13 movies"
@@ -17,12 +17,13 @@
     <Spinner
         android:id="@+id/spinnerRating"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-<!--        android:entries="@array/spinnerRating"-->
+        android:layout_height="wrap_content"
+        android:entries="@array/movieRatings"/>
+
 
 
     <ListView
-        android:id="@+id/listViewMovie"
+        android:id="@+id/lvMovie"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

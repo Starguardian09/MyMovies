@@ -1,10 +1,9 @@
 package com.myapplicationdev.android.mymovies;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
-import android.graphics.Movie;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class List extends AppCompatActivity {
@@ -29,8 +29,8 @@ public class List extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        btnPG13Movies = findViewById(R.id.btnPG13Movies);
-        lvMovies = findViewById(R.id.listViewMovie);
+        btnPG13Movies = findViewById(R.id.btnMovie);
+        lvMovies = findViewById(R.id.lvMovie);
         spinnerRating = findViewById(R.id.spinnerRating);
 
         alRating = new ArrayList<String>();

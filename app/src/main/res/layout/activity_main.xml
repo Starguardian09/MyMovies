@@ -1,146 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="#E9D5DA"
-    android:padding="10dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:orientation="horizontal"
-        android:background="#827397">
-
-
-        <FrameLayout
-            android:layout_width="459dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="258dp"
-                android:layout_height="49dp"
-                android:layout_gravity="center"
-                android:fontFamily="@font/amiko"
-                android:text="@string/movies"
-                android:textColor="#EDE6DB"
-                android:textSize="44sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="88dp"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/watching_a_movie"
-                android:layout_gravity="right"/>
-        </FrameLayout>
-
-    </LinearLayout>
+    android:padding="10dp"
+    >
 
     <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title"
-        android:fontFamily="@font/anaheim"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#363062"/>
-
-    <EditText
-        android:id="@+id/etTitle"
+        android:id="@+id/tvMovie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:text="Movie"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etMovie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter movie title here"
         android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/tvGenre"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/genre"
-        android:fontFamily="@font/anaheim"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#363062"/>
+        android:layout_marginTop="10dp"
+        android:text="Genre"
+        android:textColor="#000000"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etGenre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:hint="Enter year of release here"
         android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/tvYear"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/year"
-        android:fontFamily="@font/anaheim"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#363062"/>
+        android:layout_marginTop="10dp"
+        android:text="Year"
+        android:textColor="#000000"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"/>
+        android:hint="Enter year of release here"
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/tvRating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/rating"
-        android:fontFamily="@font/anaheim"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#363062"/>
+        android:layout_marginTop="10dp"
+        android:text="Rating"
+        android:textColor="#000000"
+        android:textStyle="bold" />
 
     <Spinner
-        android:id="@+id/spinnerGenre"
+        android:id="@+id/spinRating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/spinnerGenre"/>
+        android:entries="@array/movieRatings"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnAdd"
+            android:id="@+id/btnInsert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:text="insert"
-            android:backgroundTint="#4D4C7D"/>
-
+            android:text="Insert"
+            app:backgroundTint="#000000" />
 
         <Button
-            android:id="@+id/btnRetrieve"
+            android:id="@+id/btnShow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
             android:layout_weight="1"
             android:text="Show List"
-            android:backgroundTint="#4D4C7D"/>
+            app:backgroundTint="#000000" />
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/lv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
 
 </LinearLayout>

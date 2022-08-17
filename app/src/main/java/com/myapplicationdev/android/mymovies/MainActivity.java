@@ -1,96 +1,72 @@
 package com.myapplicationdev.android.mymovies;
-
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnAdd, btnRetrieve;
-    EditText etTitle;
-    EditText etGenre;
-    EditText etYear;
-    ArrayList<Movie> al;
-    Spinner spinGenre;
-    ListView lv;
-    ArrayAdapter<Movie> aa;
-    Movie data;
+    EditText etTitle, etYear, etGenre;
+    Button btnShow, btnInsert;
+    Spinner spinRating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        //initialize the variables with UI here
-        btnAdd = findViewById(R.id.btnAdd);
-        btnRetrieve = findViewById(R.id.btnRetrieve);
-        lv = findViewById(R.id.lv);
-        etTitle = findViewById(R.id.etTitle);
+        etTitle = findViewById(R.id.etMovie);
         etGenre = findViewById(R.id.etGenre);
         etYear = findViewById(R.id.etYear);
-        spinGenre = findViewById(R.id.spinnerGenre);
+        btnInsert = findViewById(R.id.btnInsert);
+        btnShow = findViewById(R.id.btnShow);
+        spinRating = findViewById(R.id.spinRating);
 
-        Intent i = getIntent();
-        data = (Movie) i.getSerializableExtra("data");
-
-
-        al = new ArrayList<Movie>();
-        aa = new ArrayAdapter<Movie>(this,
-                android.R.layout.simple_list_item_1, al);
-        lv.setAdapter(aa);
-
-
-
-
-
-
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+        btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String dataTitle  = etTitle.getText().toString();
-                String dataGenre = etGenre.getText().toString();
-                int dataYear = Integer.parseInt(etYear.getText().toString());
-                String movieRating = spinGenre.getSelectedItem().toString();
+            public void onClick(View view) {
+                if ((!etTitle.getText().toString().equals("")) && (!etGenre.getText().toString().equals("")) && (!etYear.getText().toString().equals(""))) {
+                    String movieTitle = etTitle.getText().toString();
+                    String genre = etGenre.getText().toString();
+                    int year = Integer.parseInt(etYear.getText().toString());
+                    String rating = spinRating.getSelectedItem().toString();
 
-                Log.d("result",movieRating+"");
-//
-//                Log.d("result",data3+"")
+                    int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
-                DBHelper dbh = new DBHelper(MainActivity.this);
-                long inserted_id = dbh.insertMovie(dataTitle,dataGenre,dataYear,movieRating);
+                    DBHelper dbh = new DBHelper(MainActivity.this);
 
-                if (inserted_id != -1){
-                    Toast.makeText(MainActivity.this, "Insert successful",
-                            Toast.LENGTH_SHORT).show();
+                    if (year >= 1888 && year <= currentYear) {
+                        long inserted_id = dbh.insertMovie(movieTitle, genre, year, rating);
+                        if (inserted_id != -1) {
+                            Toast.makeText(MainActivity.this, "Added " + movieTitle + " to the movie list successfully!", Toast.LENGTH_LONG).show();
+
+                            etTitle.setText("");
+                            etGenre.setText("");
+                            etYear.setText("");
+                        }
+                    } else {
+                        Toast.makeText(MainActivity.this, "Please enter a year after 1888 and before the current year", Toast.LENGTH_LONG).show();
+                    }
                 } else {
-                    Toast.makeText(MainActivity.this, "Insert failed",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please fill in all fields in the form correctly", Toast.LENGTH_LONG).show();
                 }
             }
         });
-        btnRetrieve.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
+        btnShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, List.class);
                 startActivity(i);
-
             }
         });
-
     }
-
 }
