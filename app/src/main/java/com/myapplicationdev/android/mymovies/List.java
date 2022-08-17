@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class List extends AppCompatActivity {
 
-    Button btnPG13Movies;
+    Button btnMovies;
     ListView lvMovies;
     ArrayList<Movie> alMovie;
     ArrayList<String> alRating;
@@ -29,7 +29,7 @@ public class List extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        btnPG13Movies = findViewById(R.id.btnMovie);
+        btnMovies = findViewById(R.id.btnMovie);
         lvMovies = findViewById(R.id.lvMovie);
         spinnerRating = findViewById(R.id.spinnerRating);
 
@@ -42,7 +42,7 @@ public class List extends AppCompatActivity {
 
         lvMovies.setAdapter(caMovie);
 
-        btnPG13Movies.setOnClickListener(new View.OnClickListener() {
+        btnMovies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DBHelper dbh = new DBHelper(List.this);

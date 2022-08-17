@@ -17,8 +17,8 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 public class UpdateActivity extends AppCompatActivity {
-    TextView tvTitle, tvMovieID, tvyear, tvGenre, tvrating, tvID;
-    EditText etTitle, etGenre, etyear;
+    TextView tvTitle, tvMovieID, tvYear, tvGenre, tvrating, tvID;
+    EditText Title, Genre, Year;
     Spinner spinRating;
     Button btnUpdate, btnDelete, btnCancel;
     Movie data;
@@ -36,23 +36,22 @@ public class UpdateActivity extends AppCompatActivity {
         btnCancel = findViewById(R.id.btnCancel);
         tvID = findViewById(R.id.tvID);
         tvMovieID = findViewById(R.id.tvMovieID);
-
         tvrating = findViewById(R.id.tvrating);
         tvTitle = findViewById(R.id.tvMovie);
-        tvyear = findViewById(R.id.tvyear);
+        tvYear = findViewById(R.id.tvyear);
         tvGenre = findViewById(R.id.tvGenre);
-        etTitle = findViewById(R.id.etMovie);
-        etGenre = findViewById(R.id.etGenre);
-        etyear = findViewById(R.id.etyear);
+        Title = findViewById(R.id.etMovie);
+        Genre = findViewById(R.id.etGenre);
+        Year = findViewById(R.id.etyear);
         spinRating = findViewById(R.id.spinRating);
 
         Intent i = getIntent();
         data = (Movie) i.getSerializableExtra("data");
         tvID.setText("Movie ID : " + '\n' + data.getId() + "");
 
-        etTitle.setText(data.getTitle());
-        etGenre.setText(data.getGenre());
-        etyear.setText(data.getYear() + "");
+        Title.setText(data.getTitle());
+        Genre.setText(data.getGenre());
+        Year.setText(data.getYear() + "");
 
         if (data.getRating().equals("G")) {
             int position = 0;
@@ -86,13 +85,13 @@ public class UpdateActivity extends AppCompatActivity {
 
                         DBHelper dbh = new DBHelper(UpdateActivity.this);
 
-                        if ((!etTitle.getText().toString().equals("")) && (!etGenre.getText().toString().equals("")) && (!etyear.getText().toString().equals(""))) {
-                            data.setTitle(etTitle.getText().toString());
-                            data.setGenre(etGenre.getText().toString());
-                            data.setYear(Integer.parseInt(etyear.getText().toString()));
+                        if ((!Title.getText().toString().equals("")) && (!Genre.getText().toString().equals("")) && (!Year.getText().toString().equals(""))) {
+                            data.setTitle(Title.getText().toString());
+                            data.setGenre(Genre.getText().toString());
+                            data.setYear(Integer.parseInt(Year.getText().toString()));
                             data.setRating(spinRating.getSelectedItem().toString());
 
-                            int year = Integer.parseInt(etyear.getText().toString());
+                            int year = Integer.parseInt(Year.getText().toString());
                             int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
                             if (year >= 1888 && year <= currentYear) {
@@ -147,24 +146,8 @@ public class UpdateActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder myBuilder = new AlertDialog.Builder(UpdateActivity.this);
-
-                //set the dialog details
-                myBuilder.setTitle("DANGER");
-                myBuilder.setMessage("Are you sure you want discard the changes? ");
-                myBuilder.setCancelable(false);  //close button
-
-                myBuilder.setPositiveButton("DISCARD", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
                         finish();   //end the activity
                     }
                 });
-                myBuilder.setNegativeButton("DO NOT DISCARD",null);
-                AlertDialog myDialog = myBuilder.create();
-                myDialog.show();
-            }
-        });
     }
 }

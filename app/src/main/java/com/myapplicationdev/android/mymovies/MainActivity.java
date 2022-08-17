@@ -1,5 +1,5 @@
 package com.myapplicationdev.android.mymovies;
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText etTitle, etYear, etGenre;
+    EditText Title, Year, Genre;
     Button btnShow, btnInsert;
     Spinner spinRating;
 
@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        etTitle = findViewById(R.id.etMovie);
-        etGenre = findViewById(R.id.etGenre);
-        etYear = findViewById(R.id.etYear);
+        Title = findViewById(R.id.etMovie);
+        Genre = findViewById(R.id.etGenre);
+        Year = findViewById(R.id.etYear);
         btnInsert = findViewById(R.id.btnInsert);
         btnShow = findViewById(R.id.btnShow);
         spinRating = findViewById(R.id.spinRating);
@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ((!etTitle.getText().toString().equals("")) && (!etGenre.getText().toString().equals("")) && (!etYear.getText().toString().equals(""))) {
-                    String movieTitle = etTitle.getText().toString();
-                    String genre = etGenre.getText().toString();
-                    int year = Integer.parseInt(etYear.getText().toString());
+                if ((!Title.getText().toString().equals("")) && (!Genre.getText().toString().equals("")) && (!Year.getText().toString().equals(""))) {
+                    String movieTitle = Title.getText().toString();
+                    String genre = Genre.getText().toString();
+                    int year = Integer.parseInt(Year.getText().toString());
                     String rating = spinRating.getSelectedItem().toString();
 
                     int currentYear = Calendar.getInstance().get(Calendar.YEAR);
@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
                         if (inserted_id != -1) {
                             Toast.makeText(MainActivity.this, "Added " + movieTitle + " to the movie list successfully!", Toast.LENGTH_LONG).show();
 
-                            etTitle.setText("");
-                            etGenre.setText("");
-                            etYear.setText("");
+                            Title.setText("");
+                            Genre.setText("");
+                            Year.setText("");
                         }
                     } else {
                         Toast.makeText(MainActivity.this, "Please enter a year after 1888 and before the current year", Toast.LENGTH_LONG).show();
