@@ -14,10 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import java.util.Calendar;
-
 
 public class UpdateActivity extends AppCompatActivity {
     TextView tvTitle, tvMovieID, tvyear, tvGenre, tvrating, tvID;
@@ -84,17 +81,6 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                AlertDialog.Builder myBuilder = new AlertDialog.Builder(UpdateActivity.this);
-
-                //set the dialog details
-                myBuilder.setTitle("NOTICE");
-                myBuilder.setMessage("Are you sure you want to update the movie " + data.getTitle());
-                myBuilder.setCancelable(false);  //close button
-
-                myBuilder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
 
                         DBHelper dbh = new DBHelper(UpdateActivity.this);
 
@@ -122,11 +108,6 @@ public class UpdateActivity extends AppCompatActivity {
                         }
                     }
                 });
-                myBuilder.setNegativeButton("CANCEL", null);
-                AlertDialog myDialog = myBuilder.create();
-                myDialog.show();
-            }
-        });
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
